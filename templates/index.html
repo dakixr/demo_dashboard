@@ -1,20 +1,25 @@
 {% extends "_base.html" %}
-{% from "graphs.html" import graph_1 %}
+{% from "graphs.html" import graph_1, graph_2 %}
 {% block body %}
   {% include "navbar.html" %}
-  <div class="container mx-auto mt-20 p-4">
+  <div class="container mx-auto mt-10 p-4">
     <div class="grid grid-cols-3 gap-4">
-      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+      <div class="cursor-grab p-4 rounded-lg text-center"
            data-swapy-slot="foo">
         <div data-swapy-item="a">{{ graph_1() }}</div>
       </div>
-      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+      <div class="cursor-grab p-4 rounded-lg text-center"
            data-swapy-slot="bar">
         <div data-swapy-item="b">{{ graph_1() }}</div>
       </div>
-      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+      <div class="cursor-grab p-4 rounded-lg text-center"
            data-swapy-slot="baz">
         <div data-swapy-item="c">{{ graph_1() }}</div>
+      </div>
+      <!-- New Row with Single Column Spanning All Three Columns -->
+      <div class="cursor-grab col-span-3 p-4 rounded-lg text-center"
+           data-swapy-slot="extra">
+        <div data-swapy-item="d">{{ graph_2() }}</div>
       </div>
     </div>
   </div>
