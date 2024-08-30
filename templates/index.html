@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+{% from "graphs.html" import graph_1 %}
+{% block body %}
+  {% include "navbar.html" %}
+  <div class="container mx-auto mt-20 p-4">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+           data-swapy-slot="foo">
+        <div data-swapy-item="a">{{ graph_1() }}</div>
+      </div>
+      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+           data-swapy-slot="bar">
+        <div data-swapy-item="b">{{ graph_1() }}</div>
+      </div>
+      <div class="border-2 border-gray-300 dark:border-gray-900 p-4 rounded-lg text-center"
+           data-swapy-slot="baz">
+        <div data-swapy-item="c">{{ graph_1() }}</div>
+      </div>
+    </div>
+  </div>
+  <script>
+      {
+          document.addEventListener('DOMContentLoaded', () => {
+              const container = document.querySelector('.container');
+
+              // Initialize Swapy
+              const swapy = Swapy.createSwapy(container, {
+                  animation: 'dynamic' // You can also use 'spring' or 'none'
+              });
+
+              // Listen for swap events
+              swapy.onSwap((event) => {
+                  console.log('New Order as Object:', event.data.object);
+                  console.log('New Order as Array:', event.data.array);
+                  console.log('New Order as Map:', event.data.map);
+              });
+          });
+      }
+  </script>
+{% endblock body %}
