@@ -1,25 +1,29 @@
 {% extends "_base.html" %}
-{% from "graphs.html" import graph_1, graph_2 %}
+{% from "graphs.html" import graph_1, graph_2, graph_3, graph_4 %}
 {% block body %}
-  {% include "navbar.html" %}
   <div class="container mx-auto mt-10 p-4">
+    {# Hero section #}
+    <div class="p-4 mb-8">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        Regain <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">control</mark> over your reports
+      </h1>
+      <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+        Drag and drop elements to fully customize your dashboard,
+      </p>
+    </div>
+    {# Dashboard section #}
     <div class="grid grid-cols-3 gap-4">
-      <div class="cursor-grab p-4 rounded-lg text-center"
-           data-swapy-slot="foo">
-        <div data-swapy-item="a">{{ graph_1() }}</div>
+      <div class="cursor-grab col-span-3 p-4" data-swapy-slot="extra">
+        <div data-swapy-item="d">{{ graph_2() }}</div>
       </div>
-      <div class="cursor-grab p-4 rounded-lg text-center"
-           data-swapy-slot="bar">
+      <div class="cursor-grab p-4" data-swapy-slot="foo">
+        <div data-swapy-item="a">{{ graph_3() }}</div>
+      </div>
+      <div class="cursor-grab p-4" data-swapy-slot="bar">
         <div data-swapy-item="b">{{ graph_1() }}</div>
       </div>
-      <div class="cursor-grab p-4 rounded-lg text-center"
-           data-swapy-slot="baz">
-        <div data-swapy-item="c">{{ graph_1() }}</div>
-      </div>
-      <!-- New Row with Single Column Spanning All Three Columns -->
-      <div class="cursor-grab col-span-3 p-4 rounded-lg text-center"
-           data-swapy-slot="extra">
-        <div data-swapy-item="d">{{ graph_2() }}</div>
+      <div class="cursor-grab p-4" data-swapy-slot="baz">
+        <div data-swapy-item="c">{{ graph_4() }}</div>
       </div>
     </div>
   </div>
@@ -34,11 +38,13 @@
               });
 
               // Listen for swap events
+              /*
               swapy.onSwap((event) => {
                   console.log('New Order as Object:', event.data.object);
                   console.log('New Order as Array:', event.data.array);
                   console.log('New Order as Map:', event.data.map);
               });
+              */
           });
       }
   </script>
